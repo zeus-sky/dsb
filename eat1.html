@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <title>Welcome Gourmet</title>
+    <style>
+        .wrap{
+             width: 100px;
+             height: 300px;
+             margin: 0 auto;
+             text-align: center;
+        }
+        #box{
+            width: 100%;
+            height: 300px;
+            border: 1px solid #00ff29;
+            text-align: center;
+            line-height: 300px;
+            font-size: 30px;
+            margin-bottom: 20px;
+            box-shadow: 1px 3px 10px 1px #0088ff;
+            -webkit-shadow: 1px 3px 10px 1px #0088ff;
+        }
+        button{
+            display: inline-block;
+            width: 40%;
+            height: 40px;
+            background: #0088ff;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid #0088ff;
+            margin-top: 5%;
+            color: #FFFFFF;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+<div id="box"></div>
+
+</div>
+
+<div style="text-align: center">
+    <button id="start">开始</button>
+    <button id="stop">停止</button>
+</div>
+<img style="width: 90%;margin: 5%" src="timg.jpg" alt=""/>
+
+
+<!--<button type="button" onclick="eat()">吃什么</button>-->
+<script>
+   var num=0;
+   var nr="";
+   var sum=0;
+
+    var state=true;
+    var arr =['炒饭','盖饭','面','米线','砂锅','麻辣烫','炸串',
+        '土豆粉','肠粉','米粉','最爱的旺仔','烤冷面','手抓饼','爆肚','锅贴',
+        '章鱼小丸子','紫菜','各类慕斯','黑森林','布朗尼','提拉米苏',
+        '牛排','牛肉干','奶昔','奶茶','双皮奶','咖喱鱼丸','寿司',
+        '天妇罗','冰激凌','三文治','鸡翅','意大利面','烧烤','鳗鱼饭',
+        '咚咚烧'];
+    var start = document.getElementById("start"),
+        stop = document.getElementById("stop"),
+        box = document.getElementById("box"),
+        timer = null;
+
+    start.onclick = function(){
+        if(state){
+            state=false;
+            timer = setInterval(function(){
+                var index = Math.floor(Math.random()*arr.length);
+                box.innerHTML = arr[index];
+            }, 100)
+
+
+        }
+
+
+    }
+    var itemnr = "";
+    stop.onclick = function(){
+
+        var item = box.innerHTML;
+        if(item==itemnr){
+            sum+=1;
+        }
+        itemnr = item;
+        num+=1;
+        alert(sum);
+        alert(num);
+        if(num>4){
+            num=0;
+            alert("看来不饿,不要吃了！");
+            clearInterval(timer);
+            state=true;
+            return false;
+        }
+        if(sum>2){
+//            $("#").val(item);
+            alert("本餐缘分,就是它了！");
+            clearInterval(timer);
+            state=true;
+            return false;
+        }
+        clearInterval(timer);
+        state=true;
+//        alert(box.innerHTML)
+    }
+
+
+
+//            function eat(){
+//        var items = ['炒饭','盖饭','面','米线','砂锅','麻辣烫','炸串',
+//            '土豆粉','肠粉','米粉','烤冷面','手抓饼','爆肚','锅贴',
+//            '章鱼小丸子','紫菜','各类慕斯','黑森林','布朗尼','提拉米苏',
+//            '牛排','牛肉干','奶昔','奶茶','双皮奶','咖喱鱼丸','寿司',
+//            '天妇罗','冰激凌','三文治','鸡翅','意大利面','烧烤','鳗鱼饭',
+//            '咚咚烧'];
+//        var item = items[Math.floor(Math.random()*items.length)];
+//        alert(item)
+//        if(item==sessionStorage.getItem('item')){
+//            sessionStorage.setItem('sum',sum+=1)
+//        }
+//        sessionStorage.setItem("item",item)
+//        sessionStorage.setItem("num",num+=1)
+//        if(sessionStorage.getItem('num')>3){
+//            alert("看来不饿,不要吃了！")
+//            return false;
+//        }
+//        if(sessionStorage.getItem('sum')>2){
+// //            $("#").val(item);
+//            alert("本餐缘分,就是它了！")
+//            return false;
+//        }
+//
+//
+//    }
+
+
+
+</script>
+</body>
+</html>
